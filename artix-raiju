@@ -555,7 +555,6 @@ pacman -Sy --noconfirm
 echo "[chroot] Installing extra packages..."
 pacman -S --noconfirm --needed \
     firefox \
-    steam \
     ttf-iosevka-nerd \
     ttf-jetbrains-mono-nerd \
     python-pynvim \
@@ -563,6 +562,10 @@ pacman -S --noconfirm --needed \
     fastfetch \
     btop \
     cliphist
+
+echo "[chroot] Installing Steam..."
+pacman -S --noconfirm --needed steam \
+    || echo "[warn] Steam failed to install (likely missing lib32 GPU deps) — install manually post-boot: pacman -S steam"
 
 # pipewire-dinit and wireplumber-dinit (from world-gremlins)
 echo "[chroot] Installing PipeWire dinit service files..."
